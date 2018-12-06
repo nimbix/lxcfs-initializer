@@ -1,0 +1,14 @@
+#!/bin/bash
+
+LXCFS_VERSION=3.0.3
+[ -n "$1" ] && LXCFS_VERSION="$1"
+
+ARCH=$(arch)
+[ "$ARCH" = "x86_64" ] && ARCH=amd64
+
+docker build --rm --build-arg LXCFS_VERSION=$LXCFS_VERSION \
+    -t docker.io/nimbix/lxcfs:$LXCFS_VERSION-$ARCH ./lxcfs-image
+docker tag docker.io/nimbix/lxcfs:$LXCFS_VERSION-$ARCH \
+    docker.io/nimbix/lxcfs:latest-$ARCH
+docker push docker.io/nimbix/lxcfs:$LXCFS_VERSION-$ARCH
+docker push docker.io/nimbix/lxcfs:latest-$ARCH

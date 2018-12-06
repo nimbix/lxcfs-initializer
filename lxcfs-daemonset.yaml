@@ -19,7 +19,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: lxcfs
-        image: registry.cn-hangzhou.aliyuncs.com/denverdino/lxcfs:2.0.8
+        image: docker.io/nimbix/lxcfs:latest
         imagePullPolicy: Always
         securityContext:
           privileged: true
