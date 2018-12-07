@@ -15,7 +15,7 @@ build-container
 Deploy LXCFS FUSE with DeamonSet
 
 ```
-kubectl apply -f lxcfs-daemonset.yaml
+kubectl apply -f https://raw.githubusercontent.com/nimbix/lxcfs-initializer/master/lxcfs-daemonset.yaml
 ```
 
 Deploy initializer
