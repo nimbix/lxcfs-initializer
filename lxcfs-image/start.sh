@@ -6,7 +6,8 @@ nsenter -m/proc/1/ns/mnt [ -L /etc/mtab ] || \
         sed -i "/^lxcfs \/var\/lib\/lxcfs fuse.lxcfs/d" /etc/mtab
 
 # Prepare
-mkdir -p /host/var/lib/lxcfs
+[ -z "$HOST_LXCFS_DIR" ] && HOST_LXCFS_DIR=/var/lib/lxcfs
+mkdir -p /host/$HOST_LXCFS_DIR
 mkdir -p /host/usr/local/lib/lxcfs
 cp -f /lxcfs/lxcfs /host/usr/local/bin/lxcfs
 cp -f /lxcfs/liblxcfs.so /host/usr/local/lib/lxcfs/liblxcfs.so

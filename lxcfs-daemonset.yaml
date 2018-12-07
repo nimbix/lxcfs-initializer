@@ -21,6 +21,9 @@ spec:
       - name: lxcfs
         image: docker.io/nimbix/lxcfs:latest
         imagePullPolicy: Always
+        env:
+          - name: HOST_LXCFS_DIR
+            value: "/var/lib/lxcfs"
         securityContext:
           privileged: true
         volumeMounts:
