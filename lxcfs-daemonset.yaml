@@ -2,6 +2,7 @@ apiVersion: apps/v1beta2
 kind: DaemonSet
 metadata:
   name: lxcfs
+  namespace: kube-system
   labels:
     app: lxcfs
 spec:
@@ -15,8 +16,8 @@ spec:
     spec:
       hostPID: true
       tolerations:
-      - key: node-role.kubernetes.io/master
-        effect: NoSchedule
+      - effect: NoSchedule
+        operator: Exists
       containers:
       - name: lxcfs
         image: docker.io/nimbix/lxcfs:latest
