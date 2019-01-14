@@ -1,14 +1,18 @@
 #!/bin/bash
 
 LXCFS_VERSION=3.0.3
+LXCFS_IMAGE_RELEASE=2
 [ -n "$1" ] && LXCFS_VERSION="$1"
+[ -n "$2" ] && LXCFS_IMAGE_RELEASE="$2"
 
-docker manifest create docker.io/nimbix/lxcfs:$LXCFS_VERSION \
-    docker.io/nimbix/lxcfs:$LXCFS_VERSION-amd64 \
-    docker.io/nimbix/lxcfs:$LXCFS_VERSION-ppc64le
-docker manifest push docker.io/nimbix/lxcfs:$LXCFS_VERSION
+docker manifest create \
+    docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE \
+    docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE-amd64 \
+    docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE-ppc64le
+docker manifest push docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE
 
-docker manifest create docker.io/nimbix/lxcfs:latest \
+docker manifest create \
+    docker.io/nimbix/lxcfs:latest \
     docker.io/nimbix/lxcfs:latest-amd64 \
     docker.io/nimbix/lxcfs:latest-ppc64le
 docker manifest push docker.io/nimbix/lxcfs:latest

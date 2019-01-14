@@ -25,6 +25,8 @@ spec:
         env:
           - name: HOST_LXCFS_DIR
             value: "/var/lib/lxcfs"
+          - name: HOST_LXCFS_BIN
+            value: "/usr/local/bin/lxcfs-static"
         securityContext:
           privileged: true
         volumeMounts:
