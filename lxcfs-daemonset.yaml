@@ -26,7 +26,9 @@ spec:
           - name: HOST_LXCFS_DIR
             value: "/var/lib/lxcfs"
           - name: HOST_LXCFS_BIN
-            value: "/usr/local/bin/lxcfs-static"
+            value: "/usr/local/bin/lxcfs.static"
+          - name: HOST_FUSERMOUNT_BIN
+            value: "/usr/local/bin/fusermount.static"
         securityContext:
           privileged: true
         volumeMounts:
