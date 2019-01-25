@@ -2,23 +2,20 @@
 
 LXCFS_VERSION=3.0.3
 LXCFS_IMAGE_RELEASE=2
-FUSE_VERSION=2.9.9
 [ -n "$1" ] && LXCFS_VERSION="$1"
 [ -n "$2" ] && LXCFS_IMAGE_RELEASE="$2"
-[ -n "$3" ] && FUSE_VERSION="$3"
 
 ARCH=$(arch)
 [ "$ARCH" = "x86_64" ] && ARCH=amd64
 
 docker build --rm \
     --build-arg LXCFS_VERSION=$LXCFS_VERSION \
-    --build-arg FUSE_VERSION=$FUSE_VERSION \
     -t docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE-$ARCH \
     ./lxcfs-image
-
-docker tag \
-    docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE-$ARCH \
-    docker.io/nimbix/lxcfs:latest-$ARCH
 docker push docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE-$ARCH
-docker push docker.io/nimbix/lxcfs:latest-$ARCH
+
+#docker tag \
+#    docker.io/nimbix/lxcfs:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE-$ARCH \
+#    docker.io/nimbix/lxcfs:latest-$ARCH
+#docker push docker.io/nimbix/lxcfs:latest-$ARCH
 

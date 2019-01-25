@@ -20,15 +20,13 @@ spec:
         operator: Exists
       containers:
       - name: lxcfs
-        image: docker.io/nimbix/lxcfs:latest
+        image: docker.io/nimbix/lxcfs:3.0.3-2
         imagePullPolicy: Always
         env:
           - name: HOST_LXCFS_DIR
             value: "/var/lib/lxcfs"
-          - name: HOST_LXCFS_BIN
-            value: "/usr/local/bin/lxcfs.static"
-          - name: HOST_FUSERMOUNT_BIN
-            value: "/usr/local/bin/fusermount.static"
+          - name: HOST_LXCFS_INSTALL_DIR
+            value: "/usr/local/lxcfs-daemonset"
         securityContext:
           privileged: true
         volumeMounts:
