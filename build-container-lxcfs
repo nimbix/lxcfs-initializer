@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LXCFS_VERSION=3.0.3
-LXCFS_IMAGE_RELEASE=2
+LXCFS_IMAGE_RELEASE=3
 [ -n "$1" ] && LXCFS_VERSION="$1"
 [ -n "$2" ] && LXCFS_IMAGE_RELEASE="$2"
 
