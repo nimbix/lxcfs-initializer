@@ -8,7 +8,7 @@ HOST_LXCFS_BIN_DIR=$HOST_LXCFS_INSTALL_DIR/bin
 HOST_LXCFS_LIB_DIR=$HOST_LXCFS_INSTALL_DIR/lib/lxcfs
 
 # Install lxcfs binaries and libs
-mkdir -p /host$HOST_LXCFS_BIN_DIR /host$HOST_LXCFS_LIB_DIR
+mkdir -p /host$HOST_LXCFS_BIN_DIR /host$HOST_LXCFS_LIB_DIR /host$HOST_LXCFS_DIR
 cp -f /lxcfs/bin/* /host$HOST_LXCFS_BIN_DIR
 cp -fP /lxcfs/lib/lxcfs/* /host$HOST_LXCFS_LIB_DIR
 
