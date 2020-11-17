@@ -1,0 +1,22 @@
+#!/bin/bash
+
+LXCFS_VERSION=3.0.3
+LXCFS_IMAGE_RELEASE=4
+[ -n "$1" ] && LXCFS_VERSION="$1"
+[ -n "$2" ] && LXCFS_IMAGE_RELEASE="$2"
+
+REGISTRY=gcr.io
+REPOSITORY=jarvice
+IMAGE=lxcfs
+PLATFORMS="linux/amd64,linux/ppc64le,linux/arm64"
+
+BUILDER=multiarch
+
+export DOCKER_CLI_EXPERIMENTAL=enabled
+docker buildx build --rm \
+    --builder $BUILDER \
+    --platform $PLATFORMS --push \
+    --build-arg LXCFS_VERSION=$LXCFS_VERSION \
+    -t $REGISTRY/$REPOSITORY/$IMAGE:$LXCFS_VERSION-$LXCFS_IMAGE_RELEASE \
+    -f ./lxcfs-image/Dockerfile ./lxcfs-image
+
